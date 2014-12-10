@@ -18,27 +18,53 @@ import java.util.Scanner;
  * @author Joshua
  */
 public class Dijkstra {
+    
+    private String fileLoc;
+    private Vertex[] vList;
+    private int amountOfVertices;
+    
+    public static String fileLoc1 = "C:\\Users\\Joshua\\Documents\\GitHub\\Dijkstra\\src\\adjMatrixFiles\\NineDirected.csv";
+    public static String fileLoc2 = "C:\\Users\\Joshua\\Documents\\GitHub\\Dijkstra\\src\\adjMatrixFiles\\HundredUnDirected.csv";
+    public static String fileLoc3 = "C:\\Users\\Joshua\\Documents\\GitHub\\Dijkstra\\src\\adjMatrixFiles\\HundredDirected.csv";
+    public static String fileLoc4 = "C:\\Users\\Joshua\\Documents\\GitHub\\Dijkstra\\src\\adjMatrixFiles\\TwentyFiveDirected.csv";
 
     /**
      * @param args the command line arguments
      * @throws java.io.FileNotFoundException
      */
+    
+    /*
     public static void main(String args[]) throws FileNotFoundException, IOException
     {
         //Vector<Vertex> vList = new Vector<Vertex>();
-        Vertex[] vList;
+        
         //String line;
-        int amountOfVertices = 0;
+        
+              
+        computePaths(vList[0]);
+        //for (Vertex v : vList)
+	{
+	    System.out.println("Distance to " + vList[vList.length-1] + ": " + vList[vList.length-1].getMinDistance());
+	    List<Vertex> path = getShortestPathTo(vList[vList.length-1]);
+	    System.out.println("Path: " + path);
+	}
+        
+       
+    }
+    */
+    
+    public Dijkstra(String pFileLoc) throws FileNotFoundException, IOException
+    {
+        fileLoc = pFileLoc;
+        
+        amountOfVertices = 0;
         int currentVertex = 0;
         int currentTarget = 0;
         
-        String fileLoc1 = "C:\\Users\\Joshua\\Documents\\GitHub\\Dijkstra\\src\\adjMatrixFiles\\NineDirected.csv";
-        String fileLoc2 = "C:\\Users\\Joshua\\Documents\\GitHub\\Dijkstra\\src\\adjMatrixFiles\\HundredUnDirected.csv";
-        String fileLoc3 = "C:\\Users\\Joshua\\Documents\\GitHub\\Dijkstra\\src\\adjMatrixFiles\\HundredDirected.csv";
-        String fileLoc4 = "C:\\Users\\Joshua\\Documents\\GitHub\\Dijkstra\\src\\adjMatrixFiles\\TwentyFiveDirected.csv";
+        
         
 
-        FileReader file = new FileReader(fileLoc3);
+        FileReader file = new FileReader(fileLoc);
         Scanner inFile = new Scanner(file);
 
         Scanner line = new Scanner(inFile.nextLine());
@@ -61,7 +87,7 @@ public class Dijkstra {
         inFile.close();
         file.close();
         
-        file = new FileReader(fileLoc3);
+        file = new FileReader(fileLoc);
         inFile = new Scanner(file);
         
         while(inFile.hasNextLine())
@@ -83,42 +109,29 @@ public class Dijkstra {
             currentTarget = 0;
             currentVertex++;
         }
-              
-        computePaths(vList[0]);
-        //for (Vertex v : vList)
-	{
-	    System.out.println("Distance to " + vList[vList.length-1] + ": " + vList[vList.length-1].getMinDistance());
-	    List<Vertex> path = getShortestPathTo(vList[vList.length-1]);
-	    System.out.println("Path: " + path);
-	}
-        
-        /*
-        for(Vertex v: vList)
-            System.out.println(v.edgeListToString());
-                */
     }
     
     /**
      * This follows Dijsktra's algorithm in the way that:
      * 1) First, all weights (L) of all vertices are set to posInifity (see Vertex.java)
      * 2) The weight (L) of the initial vertex is set to 0
-     * 3) vList (T) is initialized with the source vertex in it.
+     * 3) tList (T) is initialized with the source vertex in it.
      * 4) It then looks at the adjacent vertices and changes their weights (L) to be
      *      the minimum of the comparison between their current weight and the weight
      *      of the path leading to it.
      * 5) The vertex in question is then removed from the vList (T)
      * @param source: Vertex  
      */
-    public static void computePaths(Vertex source)
+    public void computePaths(Vertex source)
     {
         source.setMinDistance(0);
         
-        LinkedList<Vertex> vList = new LinkedList<>();
+        LinkedList<Vertex> tList = new LinkedList<>();
         //The Vertex 
-      	vList.add(source);
+      	tList.add(source);
  
-	while (!vList.isEmpty()) {
-	    Vertex u = vList.poll();
+	while (!tList.isEmpty()) {
+	    Vertex u = tList.poll();
  
             // Visit each edge exiting u
             u.getAdjacencyList().stream().forEach((e) -> 
@@ -128,10 +141,10 @@ public class Dijkstra {
                 double distanceThroughU = u.getMinDistance() + weight;
                 
                 if (distanceThroughU < v.getMinDistance()) {
-                    vList.remove(v);
+                    tList.remove(v);
                     v.setMinDistance(distanceThroughU);
                     v.setPrevious(u);
-                    vList.add(v);
+                    tList.add(v);
                 }
             });
         }
@@ -147,7 +160,7 @@ public class Dijkstra {
      * @param target: Vertex
      * @return LinkedList
      */
-    public static LinkedList<Vertex> getShortestPathTo(Vertex target)
+    public LinkedList<Vertex> getShortestPathTo(Vertex target)
     {
         LinkedList<Vertex> minPath = new LinkedList<>();
         
@@ -158,4 +171,26 @@ public class Dijkstra {
         
         return minPath;
     }
+    
+    public Vertex[] getVertexList()
+    {
+        return vList;
+    }
+    
+    public int getAmountOfVertices()
+    {
+        return amountOfVertices;
+    }
+    
+    public Vertex getSourceVertex()
+    {
+        return vList[0];
+    }
+    
+    public Vertex getLastVertex()
+    {
+        return vList[vList.length-1];
+    }
+    
+      
 }
