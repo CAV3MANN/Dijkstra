@@ -1,6 +1,12 @@
 package matrixOnly;
 import java.util.Scanner;
 
+/**
+ *@author Matthew Frei
+ * Thanks to my friend Matt for providing this repo with a small bit of 
+ * his code! (Note: it hasn't been thoroughly tested)
+ */
+
 public class alg 
 {
     /*
