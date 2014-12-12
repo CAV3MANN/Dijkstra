@@ -5,22 +5,15 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Collections;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Scanner;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 /**
- *
- * @author Joshua
+ * @author Joshua Miller
  */
 public class Dijkstra {
     
-    private String fileLoc;
-    private Vertex[] vList;
+    private final String fileLoc;
+    private final Vertex[] vList;
     private int amountOfVertices;
     
     public static final String NineDirectedPath = "/adjMatrixFiles/NineDirected.csv";
@@ -29,30 +22,12 @@ public class Dijkstra {
     public static final String TwentyFiveDirectedPath = "C:\\Users\\Joshua\\Documents\\GitHub\\Dijkstra\\src\\adjMatrixFiles\\TwentyFiveDirected.csv";
 
     /**
-     * @param args the command line arguments
-     * @throws java.io.FileNotFoundException
+     * The constructor takes in the file location of the adjacency matrix
+     * and generates a list of vertices with all corresponding edges.
+     * @param pFileLoc: String
+     * @throws FileNotFoundException
+     * @throws IOException 
      */
-    
-    /*
-    public static void main(String args[]) throws FileNotFoundException, IOException
-    {
-        //Vector<Vertex> vList = new Vector<Vertex>();
-        
-        //String line;
-        
-              
-        computePaths(vList[0]);
-        //for (Vertex v : vList)
-	{
-	    System.out.println("Distance to " + vList[vList.length-1] + ": " + vList[vList.length-1].getMinDistance());
-	    List<Vertex> path = getShortestPathTo(vList[vList.length-1]);
-	    System.out.println("Path: " + path);
-	}
-        
-       
-    }
-    */
-    
     public Dijkstra(String pFileLoc) throws FileNotFoundException, IOException
     {
         fileLoc = pFileLoc;
@@ -172,21 +147,40 @@ public class Dijkstra {
         return minPath;
     }
     
+    /**
+     * Returns a list of all of the vertices that were
+     * generated from instantiation.
+     * @return Vertex[] 
+     */
     public Vertex[] getVertexList()
     {
         return vList;
     }
     
+    /**
+     * Returns the amount of vertices that were 
+     * generated during instantiation.
+     * @return integer 
+     */
     public int getAmountOfVertices()
     {
         return amountOfVertices;
     }
     
+    /**
+     * Returns the vertex that was selected as the source.
+     * @return Vertex 
+     */
     public Vertex getSourceVertex()
     {
         return vList[0];
     }
     
+    /**
+     * Returns the vertex that was added to the vertex
+     * list last.
+     * @return Vertex 
+     */
     public Vertex getLastVertex()
     {
         return vList[vList.length-1];

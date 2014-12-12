@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package guiElements;
 
 import java.io.File;
@@ -15,12 +10,13 @@ import objectOriented.Vertex;
 
 /**
  *
- * @author Joshua
+ * @author Joshua Miller
  */
 public class SimpleDGUI extends javax.swing.JFrame {
 
     Dijkstra dAlg;
     String prevFilePath = "";
+    
     /**
      * Creates new form SimpleDGUI
      */
