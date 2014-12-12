@@ -23,10 +23,10 @@ public class Dijkstra {
     private Vertex[] vList;
     private int amountOfVertices;
     
-    public static String fileLoc1 = "C:\\Users\\Joshua\\Documents\\GitHub\\Dijkstra\\src\\adjMatrixFiles\\NineDirected.csv";
-    public static String fileLoc2 = "C:\\Users\\Joshua\\Documents\\GitHub\\Dijkstra\\src\\adjMatrixFiles\\HundredUnDirected.csv";
-    public static String fileLoc3 = "C:\\Users\\Joshua\\Documents\\GitHub\\Dijkstra\\src\\adjMatrixFiles\\HundredDirected.csv";
-    public static String fileLoc4 = "C:\\Users\\Joshua\\Documents\\GitHub\\Dijkstra\\src\\adjMatrixFiles\\TwentyFiveDirected.csv";
+    public static final String NineDirectedPath = "/adjMatrixFiles/NineDirected.csv";
+    public static final String HundredUnDirectedPath = "C:\\Users\\Joshua\\Documents\\GitHub\\Dijkstra\\src\\adjMatrixFiles\\HundredUnDirected.csv";
+    public static final String HundredDirectedPath = "C:\\Users\\Joshua\\Documents\\GitHub\\Dijkstra\\src\\adjMatrixFiles\\HundredDirected.csv";
+    public static final String TwentyFiveDirectedPath = "C:\\Users\\Joshua\\Documents\\GitHub\\Dijkstra\\src\\adjMatrixFiles\\TwentyFiveDirected.csv";
 
     /**
      * @param args the command line arguments

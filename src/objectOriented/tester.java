@@ -12,6 +12,7 @@ import java.io.IOException;
  * @author Joshua
  */
 public class tester {
+    /*
     public static void main(String args[]) throws IOException
     {
         Dijkstra alg = new Dijkstra(Dijkstra.fileLoc2);
@@ -20,5 +21,5 @@ public class tester {
         System.out.println(alg.getLastVertex().getMinDistance());
         System.out.println(alg.getShortestPathTo(alg.getLastVertex()));
     }
-    
+    */
 }
