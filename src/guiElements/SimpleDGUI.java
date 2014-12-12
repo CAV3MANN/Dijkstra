@@ -20,6 +20,7 @@ import objectOriented.Vertex;
 public class SimpleDGUI extends javax.swing.JFrame {
 
     Dijkstra dAlg;
+    String prevFilePath = "";
     /**
      * Creates new form SimpleDGUI
      */
@@ -194,7 +195,7 @@ public class SimpleDGUI extends javax.swing.JFrame {
 
     private void Button_BrowseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_BrowseActionPerformed
         // TODO add your handling code here:
-        JFileChooser fc = new JFileChooser();
+        JFileChooser fc = new JFileChooser(prevFilePath);
         
         int returnVal = fc.showOpenDialog(this);
         
@@ -203,6 +204,8 @@ public class SimpleDGUI extends javax.swing.JFrame {
             File file = fc.getSelectedFile();
             ComboBox_FilePath.addItem(file.getPath());
             ComboBox_FilePath.setSelectedIndex(ComboBox_FilePath.getItemCount()-1);
+            prevFilePath = file.getPath();
+            
         }
         
     }//GEN-LAST:event_Button_BrowseActionPerformed
